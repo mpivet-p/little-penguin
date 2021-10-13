@@ -1,0 +1,1 @@
+SUBSYSTEM=="input", SUBSYSTEMS=="usb", ACTION=="add", RUN+="/sbin/insmod /root/LP/main.ko", OWNER="root"

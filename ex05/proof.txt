@@ -1,0 +1,22 @@
+-bash-4.4# ./a.out
+****Please Enter the Option******
+        1. Write
+        2. Read
+        3. Exit
+*********************************
+2
+Your Option = 2
+Data Reading ...Done!
+
+Data = mpivet-p
+
+
+****Please Enter the Option******
+        1. Write
+        2. Read
+        3. Exit
+*********************************
+1
+Your Option = 1
+Enter the string to write into driver :mpivet-p
+Data Writing ...Done!

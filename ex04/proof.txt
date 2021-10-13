@@ -1,0 +1,11 @@
+[   67.677178] usb 2-2: new low-speed USB device number 3 using ohci-pci
+[   67.942880] usb 2-2: New USB device found, idVendor=05ac, idProduct=024f, bcdDevice= 0.74
+[   67.943213] usb 2-2: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+[   67.943467] usb 2-2: Product: Apple Keyboard
+[   67.943651] usb 2-2: Manufacturer: Apple Inc.
+[   67.960945] input: Apple Inc. Apple Keyboard as /devices/pci0000:00/0000:00:06.0/usb2/2-2/2-2:1.0/0003:05AC:024F.0002/input/input7
+[   68.012720] apple 0003:05AC:024F.0002: input,hidraw1: USB HID v1.11 Keyboard [Apple Inc. Apple Keyboard] on usb-0000:00:06.0-2/input0
+[   68.028396] apple 0003:05AC:024F.0003: Fn key not found (Apple Wireless Keyboard clone?), disabling Fn key handling
+[   68.028888] input: Apple Inc. Apple Keyboard as /devices/pci0000:00/0000:00:06.0/usb2/2-2/2-2:1.1/0003:05AC:024F.0003/input/input8
+[   68.080414] apple 0003:05AC:024F.0003: input,hidraw2: USB HID v1.11 Device [Apple Inc. Apple Keyboard] on usb-0000:00:06.0-2/input1
+[   68.102135] Hello World !

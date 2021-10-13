@@ -1,0 +1,19 @@
+Submitted By:            mpivet-p <mpivet-p@student.42.fr>
+Date:                    2021-10-08
+Initial Package Version: 1.0.0
+Upstream Status:         Not submitted
+Origin:                  little-penguin1
+Description:             EXTRAVERSION modification to -thor_kernel
+
+diff -up Makefile.orig Makefile
+--- Makefile.orig	2021-10-08 18:06:33.531962602 +0200
++++ Makefile	2021-10-08 18:06:44.500962540 +0200
+@@ -2,7 +2,7 @@
+ VERSION = 5
+ PATCHLEVEL = 15
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc4
++EXTRAVERSION = -thor_kernel
+ NAME = Opossums on Parade
+ 
+ # *DOCUMENTATION*
