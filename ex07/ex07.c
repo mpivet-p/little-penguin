@@ -91,7 +91,6 @@ static int __init init_driver(void)
 		return -1;
 	}
 	cdev_init(&etx_cdev, &fops);
-	/*Adding character device to the system*/
 	if (cdev_add(&etx_cdev, dev, 1) >= 0) {
 		if ((dev_class = class_create(THIS_MODULE,"ft_class")) != NULL) {
 			if ((device_create(dev_class, NULL, dev, NULL, "fortytwo")) != NULL) {

@@ -1,0 +1,16 @@
+Oct 17 17:28:57 +02:00 (none)  Mounting virtual file systems: /run /proc /sys OK
+Oct 17 17:28:57 +02:00 (none)  Bringing up the loopback interface... OK
+Oct 17 17:28:57 +02:00 (none)  Setting hostname to mpivet-p... OK
+Oct 17 17:28:57 +02:00 mpivet-p  Populating /dev with device nodes...  OK
+Oct 17 17:28:59 +02:00 mpivet-p  Activating all swap files/partitions... OK
+Oct 17 17:28:59 +02:00 mpivet-p  Mounting root file system in read-only mode...  OK
+Oct 17 17:28:59 +02:00 mpivet-p  Checking file systems... OK
+Oct 17 17:28:59 +02:00 mpivet-p  Remounting root file system in read-write mode... OK
+Oct 17 17:28:59 +02:00 mpivet-p  Mounting remaining file systems... OK
+Oct 17 17:28:59 +02:00 mpivet-p  Cleaning file systems: /tmp OK
+Oct 17 17:28:59 +02:00 mpivet-p  Retrying failed uevents, if any... OK
+Oct 17 17:29:00 +02:00 mpivet-p  Setting up Linux console... OK
+Oct 17 17:29:00 +02:00 mpivet-p  Starting system log daemon... OK
+Oct 17 17:29:00 +02:00 mpivet-p  Starting kernel log daemon... OK
+Oct 17 17:29:00 +02:00 mpivet-p  Bringing up the enp0s3 interface... Oct 17 17:29:00 +02:00 mpivet-p  Starting dhcpcd on the enp0s3 interface... OK
+Oct 17 17:29:00 +02:00 mpivet-p  Starting SSH Server... OK
