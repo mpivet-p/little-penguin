@@ -4,6 +4,7 @@
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("mpivet-p");
+MODULE_VERSION("1.0");
 MODULE_DESCRIPTION("Little-penguin's Hello World module");
 
 static int __init hello_init(void)

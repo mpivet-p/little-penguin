@@ -51,7 +51,8 @@ ssize_t myfd_read(struct file *fp, char __user *user
 	return simple_read_from_buffer(user, size, offs, str, len);
 }
 
-ssize_t myfd_write(struct file *fp, const char __user *user, size_t size, loff_t *offs)
+ssize_t myfd_write(struct file *fp, const char __user *user
+		, size_t size, loff_t *offs)
 {
 	ssize_t res;
 

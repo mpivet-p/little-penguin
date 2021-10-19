@@ -19,31 +19,17 @@ dev_t dev = 0;
 static struct class *dev_class;
 static struct cdev etx_cdev;
 uint8_t *kernel_buffer;
-
-static void	ft_strcpy(char *dst, const char *src)
-{
-	size_t i = 0;
-
-	while (src[i] && i < GFP_KERNEL) {
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = 0;
-}
-
-static char ft_strcmp(char *s1, char *s2)
-{
-	size_t i = 0;
-
-	while (i < GFP_KERNEL && s1[i] && s1[i] == s2[i]) {
-		i++;
-	}
-	return (s2[i] - s1[i]);
-}
+static int print_protection = 1;
 
 static ssize_t  mcdd_read(struct file *filp, char __user *buf, size_t len, loff_t * off)
 {
-	ft_strcpy(kernel_buffer, "mpivet-p\n");
+	if (print_protection) {
+		print_protection = 0;
+	} else {
+		print_protection = 1;
+		return (0);
+	}
+	strcpy(kernel_buffer, "mpivet-p\n");
 	if (copy_to_user(buf, kernel_buffer, mem_size)) {
 		return (0);
 	}
@@ -54,7 +40,7 @@ static ssize_t  mcdd_write(struct file *filp, const char *buf, size_t len, loff_
 	if (copy_from_user(kernel_buffer, buf, len)) {
 		return (0);
 	}
-	if (ft_strcmp(kernel_buffer, "mpivet-p") == 0) {
+	if (strcmp(kernel_buffer, "mpivet-p") == 0) {
 		return (len);
 	}
 	return (0);
@@ -91,7 +77,6 @@ static int __init init_driver(void)
 		return -1;
 	}
 	cdev_init(&etx_cdev, &fops);
-	/*Adding character device to the system*/
 	if (cdev_add(&etx_cdev, dev, 1) >= 0) {
 		if ((dev_class = class_create(THIS_MODULE,"ft_class")) != NULL) {
 			if ((device_create(dev_class, NULL, dev, NULL, "fortytwo")) != NULL) {
@@ -122,5 +107,3 @@ static void __exit exit_driver(void)
 
 module_init(init_driver);
 module_exit(exit_driver);
-static ssize_t  mcdd_read(struct file *filp, char __user *buf, size_t len, loff_t * off);
-static ssize_t  mcdd_write(struct file *filp, const char *buf, size_t len, loff_t * off);
