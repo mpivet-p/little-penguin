@@ -17,15 +17,15 @@ static ssize_t  mcdd_read(struct file *filp, char __user *buf, size_t len, loff_
 		print_protection = 1;
 		return (0);
 	}
-	strcpy(kernel_buffer, "mpivet-p\n");
-	if (copy_to_user(buf, kernel_buffer, mem_size)) {
+	if (copy_to_user(buf, "mpivet-p\n", 10)) {
 		return (0);
 	}
 	return (9);
 }
+
 static ssize_t  mcdd_write(struct file *filp, const char *buf, size_t len, loff_t * off)
 {
-	if (copy_from_user(kernel_buffer, buf, len)) {
+	if (copy_from_user(kernel_buffer, buf, mem_size)) {
 		return (0);
 	}
 	if (strcmp(kernel_buffer, "mpivet-p") == 0) {

@@ -18,7 +18,7 @@ static ssize_t  mcdd_read(struct file *filp, char __user *buf, size_t len, loff_
 		print_protection = 1;
 		return (0);
 	}
-	sprintf(kernel_buffer, "%lu\n", jiffies / 1000);
+	sprintf(kernel_buffer, "%lu\n", jiffies);
 	if (copy_to_user(buf, kernel_buffer, strlen(kernel_buffer))) {
 		return (0);
 	}
