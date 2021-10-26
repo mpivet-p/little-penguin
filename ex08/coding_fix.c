@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: GPL v2
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
@@ -33,7 +34,7 @@ static int __init myfd_init(void)
 
 	retval = misc_register(&myfd_device);
 	if (retval != 0)
-		printk(KERN_INFO "Failed to register `reverse' device\n");
+		pr_info("Failed to register `reverse' device\n");
 	return retval;
 }
 
