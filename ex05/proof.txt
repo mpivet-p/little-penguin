@@ -1,22 +1,12 @@
--bash-4.4# ./a.out
-****Please Enter the Option******
-        1. Write
-        2. Read
-        3. Exit
-*********************************
-2
-Your Option = 2
-Data Reading ...Done!
-
-Data = mpivet-p
-
-
-****Please Enter the Option******
-        1. Write
-        2. Read
-        3. Exit
-*********************************
-1
-Your Option = 1
-Enter the string to write into driver :mpivet-p
-Data Writing ...Done!
+-bash-4.4# ls -l /dev/fortytwo
+crw------- 1 root root 248, 0 Oct 27 18:01 /dev/fortytwo
+-bash-4.4# cat /dev/fortytwo
+mpivet-p
+-bash-4.4# echo lolilol > /dev/fortytwo
+-bash: echo: write error: Invalid argument
+-bash-4.4# echo mpivet > /dev/fortytwo
+-bash: echo: write error: Invalid argument
+-bash-4.4# echo mpivet-pp > /dev/fortytwo
+-bash: echo: write error: Invalid argument
+-bash-4.4# echo mpivet-p > /dev/fortytwo
+-bash-4.4# echo -n mpivet-p > /dev/fortytwo

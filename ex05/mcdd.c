@@ -8,7 +8,7 @@
 #include <linux/slab.h>
 #include <linux/fs.h>
 
-#define mem_size	1024
+#define mem_size	32
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("mpivet-p");
@@ -29,7 +29,7 @@ static ssize_t  mcdd_read(struct file *filp, char __user *buf, size_t len, loff_
 		print_protection = 1;
 		return (0);
 	}
-	if (copy_to_user(buf, "mpivet-p\n", 10)) {
+	if (copy_to_user(buf, "mpivet-p\n", 9)) {
 		return (0);
 	}
 	return (9);
@@ -37,28 +37,32 @@ static ssize_t  mcdd_read(struct file *filp, char __user *buf, size_t len, loff_
 
 static ssize_t  mcdd_write(struct file *filp, const char *buf, size_t len, loff_t * off)
 {
-	if (copy_from_user(kernel_buffer, buf, len)) {
-		return (0);
+	if (len > mem_size || copy_from_user(kernel_buffer, buf, len)) {
+		return (-EINVAL);
 	}
-	if (strcmp(kernel_buffer, "mpivet-p") == 0) {
+	if ((strlen(kernel_buffer) == 8
+				&& strncmp(kernel_buffer, "mpivet-p", 8) == 0)
+			|| (strlen(kernel_buffer) == 9
+				&& strncmp(kernel_buffer, "mpivet-p\n", 9) == 0)) {
 		return (len);
 	}
-	return (0);
+	return (-EINVAL);
 }
 
 static int mcdd_release(struct inode *inode, struct file *file)
 {
         kfree(kernel_buffer);
-        return 0;
+        return (0);
 }
 
 static int mcdd_open(struct inode *inode, struct file *file)
 {
 	if ((kernel_buffer = kmalloc(mem_size , GFP_KERNEL)) == 0) {
 		pr_info("Cannot allocate memory in kernel\n");
-		return -1;
+		return (ENOMEM);
 	}
-	return 0;
+	memset(kernel_buffer, 0, mem_size);
+	return (0);
 }
 
 static struct file_operations fops =
