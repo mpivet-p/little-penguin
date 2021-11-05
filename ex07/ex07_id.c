@@ -4,7 +4,7 @@
 #include <linux/uaccess.h>
 #include <linux/slab.h>
 
-#define mem_size	1024
+#define mem_size	10
 
 static uint8_t *kernel_buffer;
 static int print_protection = 1;
@@ -25,13 +25,14 @@ static ssize_t  mcdd_read(struct file *filp, char __user *buf, size_t len, loff_
 
 static ssize_t  mcdd_write(struct file *filp, const char *buf, size_t len, loff_t * off)
 {
-	if (copy_from_user(kernel_buffer, buf, mem_size)) {
-		return (0);
+	if (len > mem_size || copy_from_user(kernel_buffer, buf, len)) {
+		return (-EINVAL);
 	}
-	if (strcmp(kernel_buffer, "mpivet-p") == 0) {
+	if ((strlen(kernel_buffer) == 8 && strcmp(kernel_buffer, "mpivet-p") == 0)
+		|| (strlen(kernel_buffer) == 9 && strcmp(kernel_buffer, "mpivet-p\n") == 0)) {
 		return (len);
 	}
-	return (0);
+	return (-EINVAL);
 }
 
 static int mcdd_release(struct inode *inode, struct file *file)
